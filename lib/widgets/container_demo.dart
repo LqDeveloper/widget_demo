@@ -60,6 +60,11 @@ class NavigatorWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Container 的特殊情况"),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context,rootNavigator: true).pop();
+            },
+            icon: const Icon(Icons.arrow_back_ios)),
       ),
       body: _ContainerBody(),
     );

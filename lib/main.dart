@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_demo/widgets/bottom_nav.dart';
 import 'package:widget_demo/widgets/clip_demo.dart';
 import 'package:widget_demo/widgets/container_demo.dart';
+import 'package:widget_demo/widgets/custom_scroll_demo.dart';
 import 'package:widget_demo/widgets/popmenu_demo.dart';
 import 'package:widget_demo/widgets/scroll_demo.dart';
 import 'package:widget_demo/widgets/stack_demo.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         "/stack": (cxt) => const StackDemo(),
         "/scrollView": (cxt) => const ScrollDemo(),
         "/container": (cxt) => const ContainerDemo(),
+        "/customScroll": (cxt) => const CustomScrollDemo(),
       },
       home: HomePage(),
     );
@@ -42,7 +44,8 @@ class HomePage extends StatelessWidget {
     "剪切",
     "Stack",
     "ScrollView",
-    "Container"
+    "Container",
+    "CustomScrollView"
   ];
 
   HomePage({Key? key}) : super(key: key);
@@ -75,6 +78,8 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).pushNamed("/scrollView");
                 } else if (index == 7) {
                   Navigator.of(context).pushNamed("/container");
+                } else if (index == 8) {
+                  Navigator.of(context).pushNamed("/customScroll");
                 }
               },
               child: Container(
