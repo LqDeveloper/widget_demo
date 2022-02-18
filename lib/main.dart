@@ -1,15 +1,30 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:widget_demo/widgets/bottom_nav.dart';
 import 'package:widget_demo/widgets/clip_demo.dart';
 import 'package:widget_demo/widgets/container_demo.dart';
 import 'package:widget_demo/widgets/custom_scroll_demo.dart';
+import 'package:widget_demo/widgets/key_demo.dart';
+import 'package:widget_demo/widgets/nested_scroll_demo.dart';
 import 'package:widget_demo/widgets/popmenu_demo.dart';
 import 'package:widget_demo/widgets/scroll_demo.dart';
 import 'package:widget_demo/widgets/stack_demo.dart';
 import 'package:widget_demo/widgets/text_demo.dart';
 import 'package:widget_demo/widgets/textfield_demo.dart';
+import 'package:widget_demo/widgets/use_key_demo.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(AnnotatedRegion<SystemUiOverlayStyle>(
+    child: MyApp(),
+    value: const SystemUiOverlayStyle(
+      statusBarColor: Colors.green,
+      statusBarBrightness: Brightness.dark,
+    ),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,7 +32,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      initialRoute: "/",
       theme: ThemeData(primaryColor: Colors.blue),
       routes: {
         "/textfield": (cxt) => const TextFieldDemo(),
@@ -29,6 +43,9 @@ class MyApp extends StatelessWidget {
         "/scrollView": (cxt) => const ScrollDemo(),
         "/container": (cxt) => const ContainerDemo(),
         "/customScroll": (cxt) => const CustomScrollDemo(),
+        "/nestedScrollView": (cxt) => const NestedScrollDemo(),
+        "/keydemo": (cxt) => const KeyDemo(),
+        "/usekey": (cxt) => const UseKeyDemo(),
       },
       home: HomePage(),
     );
@@ -45,7 +62,10 @@ class HomePage extends StatelessWidget {
     "Stack",
     "ScrollView",
     "Container",
-    "CustomScrollView"
+    "CustomScrollView",
+    "NestedScrollView",
+    "Flutter中常见的Key",
+    "Key的使用实例"
   ];
 
   HomePage({Key? key}) : super(key: key);
@@ -80,6 +100,12 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).pushNamed("/container");
                 } else if (index == 8) {
                   Navigator.of(context).pushNamed("/customScroll");
+                } else if (index == 9) {
+                  Navigator.of(context).pushNamed("/nestedScrollView");
+                } else if (index == 10) {
+                  Navigator.of(context).pushNamed("/keydemo");
+                }else if (index == 11) {
+                  Navigator.of(context).pushNamed("/usekey");
                 }
               },
               child: Container(
