@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:widget_demo/widgets/animate_demo.dart';
 import 'package:widget_demo/widgets/bottom_nav.dart';
 import 'package:widget_demo/widgets/clip_demo.dart';
 import 'package:widget_demo/widgets/container_demo.dart';
@@ -10,6 +11,7 @@ import 'package:widget_demo/widgets/custom_scroll_demo.dart';
 import 'package:widget_demo/widgets/key_demo.dart';
 import 'package:widget_demo/widgets/nested_scroll_demo.dart';
 import 'package:widget_demo/widgets/popmenu_demo.dart';
+import 'package:widget_demo/widgets/rander_info_demo.dart';
 import 'package:widget_demo/widgets/scroll_demo.dart';
 import 'package:widget_demo/widgets/stack_demo.dart';
 import 'package:widget_demo/widgets/text_demo.dart';
@@ -20,7 +22,7 @@ void main() {
   runApp(AnnotatedRegion<SystemUiOverlayStyle>(
     child: MyApp(),
     value: const SystemUiOverlayStyle(
-      statusBarColor: Colors.green,
+      statusBarColor: Colors.blue,
       statusBarBrightness: Brightness.dark,
     ),
   ));
@@ -46,6 +48,8 @@ class MyApp extends StatelessWidget {
         "/nestedScrollView": (cxt) => const NestedScrollDemo(),
         "/keydemo": (cxt) => const KeyDemo(),
         "/usekey": (cxt) => const UseKeyDemo(),
+        "/randerdemo": (cxt) => const RanderDemo(),
+        "/animatedemo": (cxt) => const AnimateDemo(),
       },
       home: HomePage(),
     );
@@ -65,7 +69,9 @@ class HomePage extends StatelessWidget {
     "CustomScrollView",
     "NestedScrollView",
     "Flutter中常见的Key",
-    "Key的使用实例"
+    "Key的使用实例",
+    "获取RanderObject的位置大小信息",
+    "动画"
   ];
 
   HomePage({Key? key}) : super(key: key);
@@ -104,8 +110,12 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).pushNamed("/nestedScrollView");
                 } else if (index == 10) {
                   Navigator.of(context).pushNamed("/keydemo");
-                }else if (index == 11) {
+                } else if (index == 11) {
                   Navigator.of(context).pushNamed("/usekey");
+                } else if (index == 12) {
+                  Navigator.of(context).pushNamed("/randerdemo");
+                } else if (index == 13) {
+                  Navigator.of(context).pushNamed("/animatedemo");
                 }
               },
               child: Container(
