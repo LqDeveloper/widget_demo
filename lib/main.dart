@@ -12,6 +12,7 @@ import 'package:widget_demo/widgets/custom_scroll_demo.dart';
 import 'package:widget_demo/widgets/key_demo.dart';
 import 'package:widget_demo/widgets/listview_demo.dart';
 import 'package:widget_demo/widgets/nested_scroll_demo.dart';
+import 'package:widget_demo/widgets/notification_demo.dart';
 import 'package:widget_demo/widgets/popmenu_demo.dart';
 import 'package:widget_demo/widgets/rander_info_demo.dart';
 import 'package:widget_demo/widgets/scroll_demo.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         "/animatedemo": (cxt) => const AnimateDemo(),
         "/willPopScope": (cxt) => const WillPopScopeDemo(),
         "/listViewDemo": (cxt) => const ListViewHeightDemo(),
+        "/notification": (cxt) => const NotificationDemo(),
       },
       navigatorObservers: [MyNavigatorObserver()],
       home: HomePage(),
@@ -105,7 +107,8 @@ class HomePage extends StatelessWidget {
     "获取RanderObject的位置大小信息",
     "动画",
     "WillPopScope的使用",
-    "ListView根据内容撑开"
+    "ListView根据内容撑开",
+    "Notification"
   ];
 
   HomePage({Key? key}) : super(key: key);
@@ -154,6 +157,8 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).pushNamed("/willPopScope");
                 } else if (index == 15) {
                   Navigator.of(context).pushNamed("/listViewDemo");
+                } else if (index == 16) {
+                  Navigator.of(context).pushNamed("/notification");
                 }
               },
               child: Container(
