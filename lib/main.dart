@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:widget_demo/widgets/WillPopScopeDemo.dart';
 import 'package:widget_demo/widgets/animate_demo.dart';
 import 'package:widget_demo/widgets/bottom_nav.dart';
 import 'package:widget_demo/widgets/clip_demo.dart';
 import 'package:widget_demo/widgets/container_demo.dart';
 import 'package:widget_demo/widgets/custom_scroll_demo.dart';
 import 'package:widget_demo/widgets/key_demo.dart';
+import 'package:widget_demo/widgets/listview_demo.dart';
 import 'package:widget_demo/widgets/nested_scroll_demo.dart';
 import 'package:widget_demo/widgets/popmenu_demo.dart';
 import 'package:widget_demo/widgets/rander_info_demo.dart';
@@ -50,9 +52,39 @@ class MyApp extends StatelessWidget {
         "/usekey": (cxt) => const UseKeyDemo(),
         "/randerdemo": (cxt) => const RanderDemo(),
         "/animatedemo": (cxt) => const AnimateDemo(),
+        "/willPopScope": (cxt) => const WillPopScopeDemo(),
+        "/listViewDemo": (cxt) => const ListViewHeightDemo(),
       },
+      navigatorObservers: [MyNavigatorObserver()],
       home: HomePage(),
     );
+  }
+}
+
+class MyNavigatorObserver extends NavigatorObserver {
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    print("didPush");
+  }
+
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    print("didPop");
+  }
+
+  void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    print("didRemove");
+  }
+
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
+    print("didReplace");
+  }
+
+  void didStartUserGesture(
+      Route<dynamic> route, Route<dynamic>? previousRoute) {
+    print("didStartUserGesture");
+  }
+
+  void didStopUserGesture() {
+    print("didStopUserGesture");
   }
 }
 
@@ -71,7 +103,9 @@ class HomePage extends StatelessWidget {
     "Flutter中常见的Key",
     "Key的使用实例",
     "获取RanderObject的位置大小信息",
-    "动画"
+    "动画",
+    "WillPopScope的使用",
+    "ListView根据内容撑开"
   ];
 
   HomePage({Key? key}) : super(key: key);
@@ -116,6 +150,10 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).pushNamed("/randerdemo");
                 } else if (index == 13) {
                   Navigator.of(context).pushNamed("/animatedemo");
+                } else if (index == 14) {
+                  Navigator.of(context).pushNamed("/willPopScope");
+                } else if (index == 15) {
+                  Navigator.of(context).pushNamed("/listViewDemo");
                 }
               },
               child: Container(
