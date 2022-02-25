@@ -10,6 +10,7 @@ import 'package:widget_demo/widgets/clip_demo.dart';
 import 'package:widget_demo/widgets/container_demo.dart';
 import 'package:widget_demo/widgets/custom_scroll_demo.dart';
 import 'package:widget_demo/widgets/key_demo.dart';
+import 'package:widget_demo/widgets/keyboard_demo.dart';
 import 'package:widget_demo/widgets/listview_demo.dart';
 import 'package:widget_demo/widgets/nested_scroll_demo.dart';
 import 'package:widget_demo/widgets/notification_demo.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         "/willPopScope": (cxt) => const WillPopScopeDemo(),
         "/listViewDemo": (cxt) => const ListViewHeightDemo(),
         "/notification": (cxt) => const NotificationDemo(),
+        "/keyboard": (cxt) => const KeyboardDemo(),
       },
       navigatorObservers: [MyNavigatorObserver()],
       home: HomePage(),
@@ -108,7 +110,8 @@ class HomePage extends StatelessWidget {
     "动画",
     "WillPopScope的使用",
     "ListView根据内容撑开",
-    "Notification"
+    "Notification",
+    "键盘遮挡"
   ];
 
   HomePage({Key? key}) : super(key: key);
@@ -159,6 +162,8 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).pushNamed("/listViewDemo");
                 } else if (index == 16) {
                   Navigator.of(context).pushNamed("/notification");
+                } else if (index == 17) {
+                  Navigator.of(context).pushNamed("/keyboard");
                 }
               },
               child: Container(
